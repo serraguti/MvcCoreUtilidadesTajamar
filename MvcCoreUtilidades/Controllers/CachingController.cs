@@ -12,6 +12,18 @@ namespace MvcCoreUtilidades.Controllers
             this.memoryCache = memoryCache;
         }
 
+        //LA DURACION ESTA ESTABLECIDA EN SEGUNDOS
+        [ResponseCache(Duration = 15
+            , Location = ResponseCacheLocation.Client)]
+        public IActionResult MemoriaDistribuida()
+        {
+            string fecha =
+                DateTime.Now.ToLongDateString()
+                    + " -- " + DateTime.Now.ToLongTimeString();
+            ViewData["FECHA"] = fecha;
+            return View();
+        }
+
         public IActionResult MemoriaPersonalizada(int? tiempo)
         {
             if (tiempo == null)
