@@ -4,7 +4,7 @@ using MvcCoreUtilidades.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<RepositoryCoches>();
-
+builder.Services.AddTransient<CryptoEngine>();
 // Add services to the container.
 builder.Services.AddResponseCaching();
 builder.Services.AddDistributedMemoryCache();

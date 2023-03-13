@@ -1,0 +1,36 @@
+﻿@inject CryptoEngine cryptoEngine
+
+<h1 style="color:blue">
+    Pruebas Controller
+</h1>
+
+<a asp-controller="Pruebas" 
+    asp-action="Index"
+    asp-route-nombre="Alumno"
+    asp-route-edad="27">
+    Enviar información simple
+</a>
+<hr/>
+<a asp-controller="Pruebas" 
+    asp-action="Index"
+    asp-route-nombre='@cryptoEngine.Encrypt("Alumna")'
+    asp-route-edad="29">
+    Enviar información cifrada
+</a>
+
+<form method="post">
+    <label>Nombre: </label>
+    <input type="text" name="nombre" class="form-control"/>
+    <label>Edad: </label>
+    <input type="text" name="edad" class="form-control"/>
+    <button class="btn btn-info">
+        Enviar datos
+    </button>
+</form>
+
+<h2 style="color:red">
+    Nombre: @ViewData["NOMBRE"]
+</h2>
+<h2 style="color:green">
+    Edad: @ViewData["EDAD"]
+</h2>
