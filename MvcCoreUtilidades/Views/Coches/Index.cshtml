@@ -6,6 +6,15 @@
             $("#botoncargarcoches").click(function() {
                 $("#contenido").load("/Coches/_CochesPartial");
             })
+
+            $("#botonbuscarcoche").click(function() {
+                var idcoche = $("#cajaidcoche").val();
+                //Controller/Action?id=1
+                //Controller/Action?id=1&otro=valor
+                //Controller/Action/1  ESTO SOLO SI SE LLAMA {id} EL PARAMETRO
+                var request = "/Coches/_DetailsCoche?idcoche=" + idcoche;
+                $("#contenidodetails").load(request);
+            })
         })
      </script>
  }

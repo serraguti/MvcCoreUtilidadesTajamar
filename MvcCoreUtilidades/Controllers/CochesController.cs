@@ -22,6 +22,13 @@ namespace MvcCoreUtilidades.Controllers
             };
         }
 
+        public IActionResult Details(int idcoche)
+        {
+            Coche car =
+                this.Cars.FirstOrDefault(x => x.IdCoche == idcoche);
+            return View(car);
+        }
+
         //EN LA VISTA PRINCIPAL SERA DONDE INTEGRAREMOS
         //LAS PETICIONES ASINCRONAS
         public IActionResult Index()
@@ -40,6 +47,14 @@ namespace MvcCoreUtilidades.Controllers
             //PartialView DEBE TENER EL NOMBRE DE LA VISTA PARCIAL
             //Y EL MODELO SI LO NECESITAMOS
             return PartialView("_CochesPartial", this.Cars);
+        }
+
+        //SI ESTAMOS UTILIZANDO PartialView, SOLAMENTE
+        //PODEMOS RECIBIR PRIMITIVOS
+        public IActionResult _DetailsCoche(int idcoche)
+        {
+            Coche car = this.Cars.FirstOrDefault(x => x.IdCoche == idcoche);
+            return PartialView("_DetailsCoche", car);
         }
     }
 }
